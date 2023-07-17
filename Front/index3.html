@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <title>WCF Parking and Accomodation</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" type="text/css" href="css/foundation.css">
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script type="module" src="./index.js"></script>
+  </head>
+  <body>
+    <div class="grid-x grid-padding-x"></div>
+    <div class="row">
+            <div class="large-4 medium-4 cell">
+              <div class="callout">
+                <h5>WCF Parking and Accomodation</h5>
+                <a href="https://get.foundation/sites/docs/" class="small button">View Parking</a>
+              </div>
+    </div>
+    <div id="map" class="large-4 medium-4 cell">
+    <!--
+      The `defer` attribute causes the callback to execute after the full HTML
+      document has been parsed. For non-blocking uses, avoiding race conditions,
+      and consistent behavior across browsers, consider loading using Promises.
+      See https://developers.google.com/maps/documentation/javascript/load-maps-js-api
+      for more information.
+      -->
+    </div>
+    </div>
+
+    <article class="grid-container">
+      <div class="grid-x grid-margin-x">
+        <div class="medium-8 cell">
+          <p><img src="https://placehold.it/900x450&amp;text=Promoted Article" alt="main article image"></p>
+        </div>
+        <div class="medium-4 cell">
+          <p><img src="https://placehold.it/400x200&amp;text=Other cool article" alt="article promo image"></p>
+          <p><img src="https://placehold.it/400x200&amp;text=Other cool article" alt="article promo image"></p>
+        </div>
+      </div>
+    </article>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
+
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVpFm6MJYLgNAdyOTkI_jPyZ0B1bjgbmI&callback=initMap&v=weekly"
+      defer
+    ></script>
+  </body>
+</html>
+
+
