@@ -1,11 +1,5 @@
 function initMap() {    
   const dc = new google.maps.LatLng(38.906624, -77.065774);
-//  const parking1 = new google.maps.LatLng(38.8976095, -77.0544204);
-//  const parking2 = new google.maps.LatLng(38.8498907, -77.0546018);
-//  const acco1 = new google.maps.LatLng(38.894771, -77.093290);
-//  const acco2 = new google.maps.LatLng(38.854771, -77.013290);
-//  const parking1Nav = "https://www.google.com/maps/dir//2400+Virginia+Ave+NW,+Washington,+DC+20037/@38.8976095,-77.0544204,17z/"
-//  const parking2Nav = "https://www.google.com/maps/dir//2611+S+Clark+St,+Arlington,+VA+22202/@38.8498907,-77.0546018,17z/"
   const markerMap = new google.maps.Map(document.getElementById("map"), {
     center: dc,
     zoom: 15,
@@ -20,88 +14,23 @@ function initMap() {
     info: iconBase + "info-i_maps.png"
   };
 
-//const iconBase =
-//    "http://localhost:3000/";
-//
-//  const icons = {
-//    parking: iconBase + "parking.png",
-//    library: iconBase + "library_maps.png",
-//    info: iconBase + "info-i_maps.png"
-//  };
+   let path = window.location.hostname.replace(/\//g,''); // Remove all slashes from string
 
-   $.post( "http://localhost:3000/getdata", function(data) {
+
+   $.post( "http://" + path + ":3000/getdata", function(data) {
 	    console.log(data);
 	    addMapMarkers(data, icons, markerMap);
 	});
-
-//  const features = [
-//    {
-//      position: parking1,
-//      type: "parking",
-//      infoWindow: '<div class="popUp">' +  [
-//          "<strong>PMI Parking Garage 1</strong>",
-//            "Total spots: 100",
-//            "Cost per day: $14",
-//            "Address: 2400 Virginia Ave., NW location",
-//	  '<a href="' + parking1Nav + '"' + 'target="_blank">Navigate</a>'
-//          ].join("<br>") + "</div>"
-//    },
-//     {
-//      position: parking2,
-//      type: "parking",
-//      infoWindow: '<div class="popUp">' +  [
-//            "<strong>PMI Parking Garage 2</strong>",
-//            "Total spots: 200",
-//            "Cost per day: $14",
-//          "Address: 2611 South Clark Street, Arlington, VA",
-//	 '<a href="' + parking2Nav + '"' + 'target="_blank">Navigate</a>'
-//          ].join("<br>") + "</div>"
-//    },
-//    {
-//      position: acco1,
-//      type: "library",
-//      infoWindow:'<div class="popUp">' +  [
-//            "<strong>Acoomodation 1</strong>",
-//            "Total rooms: 35",
-//            "Cost per day: $85",
-//            "Address: 123 Street"
-//          ].join("<br>") + "</div>"
-//    },
-//    {
-//      position: acco2,
-//      type: "library",
-//      infoWindow: '<div class="popUp">' + [
-//            "<strong>Acoomodation 2</strong>",
-//            "Total rooms: 45",
-//            "Cost per day: $95",
-//            "Address: 445 Street"
-//          ].join("<br>") + "</div>"
-//    }
-//  ];
-
-  // Create markers.
-//  for (let i = 0; i < features.length; i++)
-//  {
-//    addMarker(features[i], icons[features[i].type].icon, map    )
-//  }
 }
+
+
+
 function addMapMarkers(data, icons, markerMap){
  for (var i=0; i < data.values.length; i++)
  {
     addMarker(data.headers, data.values[i], icons, markerMap);
  }
 }
-
-//
-//function addParkingIcon(lat,lon,){
-//}
-//
-//function addAccoIcon(){
-//
-//}
-//
-//function addMetroIcon(){
-//}
 
 var ToDisplay = ["Name", "Address", "Cost", "Distance to the Mall", "Nearest Exit from VA", "Nearest Exit from MD", "Website", "Navigate_URL"];
 var HyperLinks = ["Navigate_URL", "Website"];
@@ -154,8 +83,6 @@ function addMarker(infoHeaders, infoValues, icons, markerMap){
 }
 
 function addMarkerV1(markerFeature, markerIcon, markerMap){
-    // features = lat, lon, type
-    // info window = Name, Other Properties
      var marker = new google.maps.Marker({
       position: markerFeature.position,
       icon: markerIcon,
